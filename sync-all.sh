@@ -15,12 +15,6 @@ LOCAL_DATAONE=$LOCAL_ROOT/dataone/data/
 LOG_DIR=$(pwd)/logs
 LOG_FILE=$LOG_DIR/$(date +"%Y-%m-%d-%H-%M").out
 
-function sync_sequential() {
-  ./sync-remote.sh $PORT $REMOTE_GIB $LOCAL_GIB
-  ./sync-remote.sh $PORT $REMOTE_BHL $LOCAL_BHL
-  ./sync-remote.sh $PORT $REMOTE_DATAONE $LOCAL_DATAONE
-}
-
 mkdir -p $LOG_DIR
 touch $LOG_FILE
 nohup time bash -c "\\
