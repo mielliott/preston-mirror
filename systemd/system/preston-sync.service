@@ -1,0 +1,9 @@
+[Unit]
+Description=Syncs with preston.guoda.bio
+
+[Service]
+Type=oneshot
+User=preston
+WorkingDirectory=/home/preston/preston-mirror/
+ExecStart=./sync-all.sh
+

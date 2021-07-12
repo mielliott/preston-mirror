@@ -1,0 +1,12 @@
+[Unit]
+Description=Web interface for Preston.
+
+[Service]
+Type=simple
+User=preston
+WorkingDirectory=/var/lib/preston-mirror/
+ExecStart=/usr/bin/socat TCP4-LISTEN:8080,reuseaddr,fork SYSTEM:"./preston-web-service-with-remotes.sh"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
