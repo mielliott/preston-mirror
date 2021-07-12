@@ -1,0 +1,43 @@
+
+server {
+        listen 80;
+        server_name preston.acis.ufl.edu;
+        return 301 https://$host$request_uri;
+}
+
+server {
+	root /home/preston/;
+
+	listen 443 http2 ssl;
+	listen [::]:443 http2 ssl;
+
+	server_name preston.acis.ufl.edu;
+
+	ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+	ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+	ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+	location ~ "/\.well-known/genid" {
+		return 302 https://www.w3.org/TR/rdf11-concepts/#section-skolemization;
+	}
+
+	location ~ "^/([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{58})$" {
+		try_files /preston-gib/data/$1/$2/$uri /preston-bhl/data/$1/$2/$uri /preston-dataone/data/$1/$2/$uri =404;
+        }
+
+	merge_slashes off;
+	location ~ "/(get|cat|version)(?:/(.*))?" {
+		proxy_pass http://127.0.0.1:8080/$1/$2;
+	}
+	
+        location ~ "/(find|match|regex)(?:/(.*))?" {
+                proxy_pass http://127.0.0.1:8081/$1/$2;
+                add_header 'Access-Control-Allow-Origin' '*';
+                add_header 'Access-Control-Allow-Credentials' 'true';
+                add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+                add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+        }
+
+	error_page 404 /404.html;                                                                                                                              location = /404.html {                                                                                                                                 }                                                                                                                                                                                                                                                                                                             error_page 500 502 503 504 /50x.html;                                                                                                                  location = /50x.html {                                                                                                                                 }
+}
+
