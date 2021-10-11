@@ -20,7 +20,7 @@ echo "Saving log to $LOG_FILE"
 
 mkdir -p $LOG_DIR
 touch $LOG_FILE
-ln -s $LOG_FILE $LATEST_FILE
+ln -sf $LOG_FILE $LATEST_FILE
 
 ./sync-remote.sh $PORT $REMOTE_GIB $LOCAL_GIB >> $LOG_FILE
 ./sync-remote.sh $PORT $REMOTE_BHL $LOCAL_BHL >> $LOG_FILE
