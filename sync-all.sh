@@ -14,12 +14,13 @@ LOCAL_BHL=$LOCAL_ROOT/bhl/data/
 LOCAL_DATAONE=$LOCAL_ROOT/dataone/data/
 
 LOG_FILE=$LOG_DIR/$(date +"%Y-%m-%d-%H-%M").out
+LATEST_FILE=$LOG_DIR/latest.out
 
 echo "Saving log to $LOG_FILE"
 
 mkdir -p $LOG_DIR
 touch $LOG_FILE
-ln -s $LOG_FILE "latest.out"
+ln -s $LOG_FILE $LATEST_FILE
 
 nohup time bash -c "\\
   ./sync-remote.sh $PORT $REMOTE_GIB $LOCAL_GIB \\
