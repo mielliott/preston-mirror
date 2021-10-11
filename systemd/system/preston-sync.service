@@ -2,7 +2,7 @@
 Description=Syncs with preston.guoda.bio
 
 [Service]
-Type=oneshot
+Type=simple
 User=preston
 WorkingDirectory=/var/lib/preston-mirror/
 ExecStart=/var/lib/preston-mirror/sync-all.sh /home/preston/logs
