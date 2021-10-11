@@ -22,9 +22,7 @@ mkdir -p $LOG_DIR
 touch $LOG_FILE
 ln -s $LOG_FILE $LATEST_FILE
 
-nohup time bash -c "\\
-  ./sync-remote.sh $PORT $REMOTE_GIB $LOCAL_GIB \\
-  ./sync-remote.sh $PORT $REMOTE_BHL $LOCAL_BHL \\
-  ./sync-remote.sh $PORT $REMOTE_DATAONE $LOCAL_DATAONE
-" > $LOG_FILE 2>&1 &
+./sync-remote.sh $PORT $REMOTE_GIB $LOCAL_GIB >> $LOG_FILE
+./sync-remote.sh $PORT $REMOTE_BHL $LOCAL_BHL >> $LOG_FILE
+./sync-remote.sh $PORT $REMOTE_DATAONE $LOCAL_DATAONE >> $LOG_FILE
 
