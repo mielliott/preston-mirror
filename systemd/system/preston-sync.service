@@ -4,6 +4,8 @@ Description=Syncs with preston.guoda.bio
 [Service]
 Type=oneshot
 User=preston
-WorkingDirectory=/home/preston/preston-mirror/
-ExecStart=./sync-all.sh
+WorkingDirectory=/var/lib/preston-mirror/
+ExecStart=/var/lib/preston-mirror/sync-all.sh /home/preston/logs
+Restart=on-failure
+RestartSec=5s
 
