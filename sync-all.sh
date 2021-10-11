@@ -1,6 +1,7 @@
 #!/bin/bash
 
-PORT=${1:-9934}
+LOG_DIR=${1:-$~/logs}
+PORT=${2:-9934}
 
 REMOTE_ROOT=mielliott@preston.guoda.bio:/home/preston
 REMOTE_GIB=$REMOTE_ROOT/preston-archive/data/
@@ -12,8 +13,9 @@ LOCAL_GIB=$LOCAL_ROOT/gbif-idigbio-biocase/data/
 LOCAL_BHL=$LOCAL_ROOT/bhl/data/
 LOCAL_DATAONE=$LOCAL_ROOT/dataone/data/
 
-LOG_DIR=$(pwd)/logs
 LOG_FILE=$LOG_DIR/$(date +"%Y-%m-%d-%H-%M").out
+
+echo "Saving log to $LOG_FILE"
 
 mkdir -p $LOG_DIR
 touch $LOG_FILE
