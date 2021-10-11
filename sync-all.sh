@@ -19,6 +19,8 @@ echo "Saving log to $LOG_FILE"
 
 mkdir -p $LOG_DIR
 touch $LOG_FILE
+ln -s $LOG_FILE "latest.out"
+
 nohup time bash -c "\\
   ./sync-remote.sh $PORT $REMOTE_GIB $LOCAL_GIB \\
   ./sync-remote.sh $PORT $REMOTE_BHL $LOCAL_BHL \\
