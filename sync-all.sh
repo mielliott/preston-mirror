@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 LOG_DIR=${1:-$~/logs}
 PORT=${2:-9934}

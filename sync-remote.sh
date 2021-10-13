@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 PORT=$1
 REMOTE_DIR=$2
 LOCAL_DIR=$3
