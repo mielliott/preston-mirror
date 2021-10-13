@@ -9,3 +9,5 @@ ExecStart=/var/lib/preston-mirror/sync-all.sh /home/preston/logs
 Restart=on-failure
 RestartSec=5s
 
+[Install]
+WantedBy=multi-user.target
