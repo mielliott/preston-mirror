@@ -7,7 +7,7 @@ User=preston
 WorkingDirectory=/var/lib/preston-mirror/
 ExecStart=/var/lib/preston-mirror/sync-all.sh /home/preston/logs
 Restart=on-failure
-RestartSec=5s
+RestartSec=5min
 
 [Install]
 WantedBy=multi-user.target
